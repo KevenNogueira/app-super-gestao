@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\LogAcesso;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class LogAcessesoMiddleware
+class AutenticacaoMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,12 +15,10 @@ class LogAcessesoMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        $ip = $request->server->get('REMOTE_ADDR');
-        $rota = $request->getRequestUri();
-
-        LogAcesso::create(['log' => "IP: $ip | Rota: $rota"]);
-
-        return $next($request);
+        if (false) {
+            return $next($request);
+        } else {
+            return Response('Acesso negado! Necessario autenticação.');
+        }
     }
 }
