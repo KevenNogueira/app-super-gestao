@@ -14,8 +14,33 @@
             </ul>
         </div>
         <div class="informacao-pagina">
-            <div class="login-card">
-                ........ Consulta de Fornecedores ........
+            <div class="fornecedores">
+                <table class="tabela-fornecedores">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CNPJ</th>
+                            <th>Site</th>
+                            <th>UF</th>
+                            <th>E-mail</th>
+                            <th>Exclusão</th>
+                            <th>Alteração</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($fornecedores as $fornecedor)
+                            <tr>
+                                <td>{{ $fornecedor->nome }}</td>
+                                <td>{{ $fornecedor->cnpj }}</td>
+                                <td>{{ $fornecedor->site }}</td>
+                                <td>{{ $fornecedor->uf }}</td>
+                                <td>{{ $fornecedor->email }}</td>
+                                <td>Exclusão</td>
+                                <td>Alteração</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

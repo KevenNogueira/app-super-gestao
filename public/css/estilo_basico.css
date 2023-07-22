@@ -214,3 +214,20 @@ span {
     margin-left: auto;
     margin-right: auto;
 }
+
+.fornecedores {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 65px;
+}
+
+.tabela-fornecedores {
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 10px 0px 10px 0;
+}
