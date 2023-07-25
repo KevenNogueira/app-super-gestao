@@ -19,6 +19,14 @@ h2 {
     color: #333333;
     font-size: 22px;
 }
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #268fd0;
+}
 
 input,
 select,

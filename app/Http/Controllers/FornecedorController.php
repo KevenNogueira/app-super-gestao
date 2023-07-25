@@ -26,8 +26,8 @@ class FornecedorController extends Controller
     public function cadastro(Request $request)
     {
         $msg = '';
-
-        if (!empty($request->input('_token'))) {
+        //Cadastro de Fornecedores
+        if (!empty($request->input('_token') && empty($request->input('id')))) {
             $regras = [
                 'nome' => 'required|min:3|max:50',
                 'cnpj' => 'required|min:14|max:14',
@@ -52,7 +52,28 @@ class FornecedorController extends Controller
 
             $msg = 'Registro incluido com Sucesso';
         }
+        //Atualização de registro Fornecedores
+        if (!empty($request->input('_token') && !empty($request->input('id')))) {
+            $fornecedor = Fornecedor::find($request->input('id'));
+            $update = $fornecedor->update($request->all());
+
+            if ($update) {
+                $msg = 'Atualização feita com sucesso!';
+            } else {
+                $msg = 'Erro na atualização';
+            }
+
+            return view('app.fornecedor.index', ['titulo' => 'Fornecedores', 'msg' => $msg]);
+        }
 
         return view('app.fornecedor.cadastro', ['titulo' => 'Fornecedores', 'msg' => $msg]);
+    }
+
+    public function editar($id)
+    {
+
+        $fornecedor = Fornecedor::find($id);
+
+        return view('app.fornecedor.cadastro', ['titulo' => 'Fornecedores', 'fornecedor' => $fornecedor]);
     }
 }

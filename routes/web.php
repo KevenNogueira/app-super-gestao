@@ -44,6 +44,7 @@ Route::middleware('autencicacao')->prefix('/app')->group(function () {
     Route::post('/fornecedor/consulta', [FornecedorController::class, 'listar'])->name('app.fornecedor.consulta');
     Route::get('/fornecedor/cadastro', [FornecedorController::class, 'cadastro'])->name('app.fornecedor.cadastro');
     Route::post('/fornecedor/cadastro', [FornecedorController::class, 'cadastro'])->name('app.fornecedor.cadastro');
+    Route::get('/fornecedor/editar/{id}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
 
     Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
 

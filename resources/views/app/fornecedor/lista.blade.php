@@ -24,7 +24,7 @@
                             <th>UF</th>
                             <th>E-mail</th>
                             <th>Exclusão</th>
-                            <th>Alteração</th>
+                            <th>Edição</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,11 +32,11 @@
                             <tr>
                                 <td>{{ $fornecedor->nome }}</td>
                                 <td>{{ $fornecedor->cnpj }}</td>
-                                <td>{{ $fornecedor->site }}</td>
+                                <td> <a href="{{ $fornecedor->site }}">{{ $fornecedor->site }}</a></td>
                                 <td>{{ $fornecedor->uf }}</td>
                                 <td>{{ $fornecedor->email }}</td>
                                 <td>Exclusão</td>
-                                <td>Alteração</td>
+                                <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Edição</a></td>
                             </tr>
                         @endforeach
                     </tbody>

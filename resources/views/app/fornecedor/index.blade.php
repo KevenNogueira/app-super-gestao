@@ -15,6 +15,7 @@
         </div>
         <div class="informacao-pagina">
             <div class="login-card">
+                {{ $msg ?? '' }}
                 <form action="{{ route('app.fornecedor.consulta') }}" method="post">
                     @csrf
                     <input type="text" class="borda-preta" name="nome" placeholder="Nome">
