@@ -19,13 +19,15 @@ class FornecedorController extends Controller
             ->where('site', 'like', '%' . $request->input('site') . '%')
             ->where('uf', 'like', '%' . $request->input('uf') . '%')
             ->where('email', 'like', '%' . $request->input('email') . '%')
-            ->get();
-        return view('app.fornecedor.lista', ['titulo' => 'Fornecedores', 'fornecedores' => $fornecedores]);
+            ->simplePaginate(10);
+
+        return view('app.fornecedor.lista', ['titulo' => 'Fornecedores', 'fornecedores' => $fornecedores, 'request' => $request->all()]);
     }
 
     public function cadastro(Request $request)
     {
         $msg = '';
+
         //Cadastro de Fornecedores
         if (!empty($request->input('_token') && empty($request->input('id')))) {
             $regras = [
@@ -52,6 +54,7 @@ class FornecedorController extends Controller
 
             $msg = 'Registro incluido com Sucesso';
         }
+
         //Atualização de registro Fornecedores
         if (!empty($request->input('_token') && !empty($request->input('id')))) {
             $fornecedor = Fornecedor::find($request->input('id'));

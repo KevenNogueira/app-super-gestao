@@ -41,6 +41,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $fornecedores->appends($request)->links() }}
+                {{ $fornecedores->currentPage() }}
             </div>
         </div>
     </div>

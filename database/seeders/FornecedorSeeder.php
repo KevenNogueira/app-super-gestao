@@ -15,7 +15,7 @@ class FornecedorSeeder extends Seeder
     public function run(): void
     {
         // Instancia do objeto
-        $fornecedor = new Fornecedor();
+        /*         $fornecedor = new Fornecedor();
 
         $fornecedor->nome = 'Arte Pães LTDA';
         $fornecedor->site = 'https://www.artepaes.com.br';
@@ -36,6 +36,8 @@ class FornecedorSeeder extends Seeder
             'site' => 'https://www.mundiale.com.br',
             'uf' => 'MG',
             'email' => 'mundialetelecomunicacoes@mundiale.com.br',
-        ]);
+        ]); */
+
+        Fornecedor::factory()->count(95)->create();
     }
 }
