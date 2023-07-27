@@ -14,8 +14,8 @@
             </ul>
         </div>
         <div class="informacao-pagina">
-            <div class="fornecedores">
-                <table class="tabela-fornecedores">
+            <div class="box-table">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -35,7 +35,7 @@
                                 <td> <a href="{{ $fornecedor->site }}">{{ $fornecedor->site }}</a></td>
                                 <td>{{ $fornecedor->uf }}</td>
                                 <td>{{ $fornecedor->email }}</td>
-                                <td>Exclusão</td>
+                                <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}">Exclusão</a></td>
                                 <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Edição</a></td>
                             </tr>
                         @endforeach

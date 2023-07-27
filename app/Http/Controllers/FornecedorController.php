@@ -79,4 +79,15 @@ class FornecedorController extends Controller
 
         return view('app.fornecedor.cadastro', ['titulo' => 'Fornecedores', 'fornecedor' => $fornecedor]);
     }
+
+    public function excluir($id)
+    {
+        if (Fornecedor::find($id)->delete()) {
+            $msg = 'Exclusão realizada com sucesso!';
+            return view('app.fornecedor.index', ['titulo' => 'Fornecedores', 'msg' => $msg]);
+        }
+
+        $msg = 'Erro na exclução de registro';
+        return view('app.fornecedor.index', ['titulo' => 'Fornecedores', 'msg' => $msg]);
+    }
 }

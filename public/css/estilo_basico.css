@@ -223,14 +223,14 @@ span {
     margin-right: auto;
 }
 
-.fornecedores {
+.box-table {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 65px;
 }
 
-.tabela-fornecedores {
+.table {
     width: 100%;
     margin-bottom: 10px;
 }
