@@ -22,6 +22,7 @@
                             <th>Descrição</th>
                             <th>Peso</th>
                             <th>Unidade Médida</th>
+                            <th>Visualização</th>
                             <th>Exclusão</th>
                             <th>Edição</th>
                         </tr>
@@ -33,6 +34,7 @@
                                 <td>{{ $produto->descricao }}</td>
                                 <td>{{ $produto->peso }}</td>
                                 <td>{{ $produto->unidade_id }}</td>
+                                <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualização</a></td>
                                 <td><a href="#">Exclusão</a></td>
                                 <td><a href="#">Edição</a>
                                 </td>
