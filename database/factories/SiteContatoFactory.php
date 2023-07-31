@@ -20,7 +20,7 @@ class SiteContatoFactory extends Factory
             'nome' => fake()->name(),
             'telefone' => fake()->cellphoneNumber(),
             'email' => fake()->unique()->email(),
-            'motivo_contato' => fake()->numberBetween(1, 5),
+            'motivo_contatos_id' => fake()->numberBetween(1, 5),
             'mensagem' => fake()->text(100),
         ];
     }
