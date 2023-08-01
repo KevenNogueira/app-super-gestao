@@ -21,7 +21,11 @@ class FornecedorController extends Controller
             ->where('email', 'like', '%' . $request->input('email') . '%')
             ->simplePaginate(10);
 
-        return view('app.fornecedor.lista', ['titulo' => 'Fornecedores', 'fornecedores' => $fornecedores, 'request' => $request->all()]);
+        return view('app.fornecedor.lista', [
+            'titulo' => 'Fornecedores',
+            'fornecedores' => $fornecedores,
+            'request' => $request->all()
+        ]);
     }
 
     public function cadastro(Request $request)
@@ -66,10 +70,16 @@ class FornecedorController extends Controller
                 $msg = 'Erro na atualização';
             }
 
-            return view('app.fornecedor.index', ['titulo' => 'Fornecedores', 'msg' => $msg]);
+            return view('app.fornecedor.index', [
+                'titulo' => 'Fornecedores',
+                'msg' => $msg
+            ]);
         }
 
-        return view('app.fornecedor.cadastro', ['titulo' => 'Fornecedores', 'msg' => $msg]);
+        return view('app.fornecedor.cadastro', [
+            'titulo' => 'Fornecedores',
+            'msg' => $msg
+        ]);
     }
 
     public function editar($id)
@@ -77,17 +87,28 @@ class FornecedorController extends Controller
 
         $fornecedor = Fornecedor::find($id);
 
-        return view('app.fornecedor.cadastro', ['titulo' => 'Fornecedores', 'fornecedor' => $fornecedor]);
+        return view('app.fornecedor.cadastro', [
+            'titulo' => 'Fornecedores',
+            'fornecedor' => $fornecedor
+        ]);
     }
 
     public function excluir($id)
     {
         if (Fornecedor::find($id)->delete()) {
             $msg = 'Exclusão realizada com sucesso!';
-            return view('app.fornecedor.index', ['titulo' => 'Fornecedores', 'msg' => $msg]);
+
+            return view('app.fornecedor.index', [
+                'titulo' => 'Fornecedores',
+                'msg' => $msg
+            ]);
         }
 
         $msg = 'Erro na exclução de registro';
-        return view('app.fornecedor.index', ['titulo' => 'Fornecedores', 'msg' => $msg]);
+
+        return view('app.fornecedor.index', [
+            'titulo' => 'Fornecedores',
+            'msg' => $msg
+        ]);
     }
 }

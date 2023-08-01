@@ -17,7 +17,11 @@ class ProdutoController extends Controller
     {
         $produtos = Produto::simplePaginate(10);
 
-        return view('app.produto.index', ['titulo' => 'Produtos', 'produtos' => $produtos, 'request' => $request]);
+        return view('app.produto.index', [
+            'titulo' => 'Produtos',
+            'produtos' => $produtos,
+            'request' => $request
+        ]);
     }
 
     /**
@@ -26,7 +30,10 @@ class ProdutoController extends Controller
     public function create()
     {
         $unidades = Unidade::all();
-        return view('app.produto.create', ['titulo' => 'Produtos', 'unidades' => $unidades]);
+        return view('app.produto.create', [
+            'titulo' => 'Produtos',
+            'unidades' => $unidades
+        ]);
     }
 
     /**
@@ -61,7 +68,10 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        return view('app.produto.show', ['titulo' => 'Produtos', 'produto' => $produto]);
+        return view('app.produto.show', [
+            'titulo' => 'Produtos',
+            'produto' => $produto
+        ]);
     }
 
     /**
@@ -71,7 +81,11 @@ class ProdutoController extends Controller
     {
         $unidades = Unidade::all();
 
-        return view('app.produto.edit', ['titulo' => 'Produtos', 'produto' => $produto, 'unidades' => $unidades]);
+        return view('app.produto.edit', [
+            'titulo' => 'Produtos',
+            'produto' => $produto,
+            'unidades' => $unidades
+        ]);
     }
 
     /**

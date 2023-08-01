@@ -19,7 +19,11 @@ class LoginController extends Controller
         if ($request->get('erro') == 2) {
             $erro = 'Necessario autenticação para acessar a página';
         }
-        return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
+
+        return view('site.login', [
+            'titulo' => 'Login',
+            'erro' => $erro
+        ]);
     }
 
     public function autenticar(Request $request)
