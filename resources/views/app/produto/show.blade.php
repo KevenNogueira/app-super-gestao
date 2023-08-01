@@ -40,7 +40,6 @@
                         <td>Unidade Médida</td>
                         <td>{{ $produto->unidade_id }}</td>
                     </tr>
-
                 </table>
             </div>
         </div>

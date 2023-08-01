@@ -35,8 +35,18 @@
                                 <td>{{ $produto->peso }}</td>
                                 <td>{{ $produto->unidade_id }}</td>
                                 <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualização</a></td>
-                                <td><a href="#">Exclusão</a></td>
-                                <td><a href="#">Edição</a>
+                                <td>
+                                    <form id="form_{{ $produto->id }}" method="POST"
+                                        action="{{ route('produto.destroy', ['produto' => $produto->id]) }}">
+
+                                        @method('DELETE')
+                                        @csrf
+                                        <a href="#"
+                                            onclick="document.getElementById('form_{{ $produto->id }}').submit()">Exclusão</a>
+
+                                    </form>
+                                </td>
+                                <td><a href="{{ route('produto.edit', ['produto' => $produto->id]) }}">Edição</a>
                                 </td>
                             </tr>
                         @endforeach

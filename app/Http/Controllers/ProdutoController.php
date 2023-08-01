@@ -6,6 +6,7 @@ use App\Models\Produto;
 use App\Http\Controllers\Controller;
 use App\Models\Unidade;
 use Illuminate\Http\Request;
+use Illuminate\Support\ViewErrorBag;
 
 class ProdutoController extends Controller
 {
@@ -68,7 +69,9 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        //
+        $unidades = Unidade::all();
+        //dd($unidades);
+        return view('app.produto.edit', ['titulo' => 'Produtos', 'produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**
@@ -76,7 +79,9 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        $produto->update($request->all());
+
+        return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
 
     /**
@@ -84,6 +89,7 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        //
+        $produto->delete();
+        return redirect()->route('produto.index');
     }
 }
