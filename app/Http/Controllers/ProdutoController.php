@@ -70,7 +70,7 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
-        //dd($unidades);
+
         return view('app.produto.edit', ['titulo' => 'Produtos', 'produto' => $produto, 'unidades' => $unidades]);
     }
 
