@@ -20,9 +20,14 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            UserSeeder::class,
             FornecedorSeeder::class,
             MotivoContatoSeeder::class,
-            SiteContatoSeeder::class
+            SiteContatoSeeder::class,
+            UnMedidaComprimentoSeeder::class,
+            UnMedidaMassaSeeder::class,
+            ProdutoSeeder::class,
+            ProdutoDetalheSeeder::class
         ]);
     }
 }

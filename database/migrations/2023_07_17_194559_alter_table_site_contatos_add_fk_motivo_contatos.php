@@ -18,13 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('motivo_contatos_id')->after('email');
         });
 
-        // Movendo o conteudo da coluna motivo_contato para motivo_contatos_id
-        DB::statement('UPDATE site_contatos SET motivo_contatos_id = motivo_contato');
-
-        // Criação da FK e remoção da coluna motivo_contato
+        // Criação da FK
         Schema::table('site_contatos', function (Blueprint $table) {
             $table->foreign('motivo_contatos_id')->references('id')->on('motivo_contatos');
-            $table->dropColumn('motivo_contato');
         });
     }
 
@@ -33,14 +29,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Criação  da coluna motivo_contato remoção da FK
+        // Remoção da FK
         Schema::table('site_contatos', function (Blueprint $table) {
-            $table->integer('motivo_contato');
             $table->dropForeign('site_contatos_motivo_contatos_id_foreign');
         });
-
-        // Movendo o conteudo da coluna motivo_contatos_id para motivo_contato
-        DB::statement('UPDATE site_contatos SET motivo_contato = motivo_contatos_id');
 
         // Removendo a coluna motivo_contatos_id
         Schema::table('site_contatos', function (Blueprint $table) {
