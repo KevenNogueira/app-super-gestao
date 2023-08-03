@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Http\Controllers\Controller;
-use App\Models\Unidade;
+use App\Models\UnMedidaMassa;
 use Illuminate\Http\Request;
 use Illuminate\Support\ViewErrorBag;
 
@@ -29,10 +29,10 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        $unidades = Unidade::all();
+        $unidadesMassa = UnMedidaMassa::all();
         return view('app.produto.create', [
             'titulo' => 'Produtos',
-            'unidades' => $unidades
+            'unidadesMassa' => $unidadesMassa
         ]);
     }
 
@@ -45,7 +45,7 @@ class ProdutoController extends Controller
             'nome' => 'required|min:3|max:100',
             'descricao' => 'required|min:3|max:2000',
             'peso' => 'required|integer',
-            'unidade_id' => 'exists:unidades,id'
+            'un_medida_massa_id' => 'exists:un_medida_massas,id'
         ];
 
         $feedback = [
@@ -54,7 +54,7 @@ class ProdutoController extends Controller
             'nome.max' => 'O nome deve conter 100 caracteres máximos!',
             'descricao.max' => 'A descrição deve conter 2.000 caracteres máximos!',
             'peso' => 'O peso deve ser um número inteiro!',
-            'unidade_id.exists' => 'A unidade informada não existe!'
+            'un_medida_massa_id.exists' => 'A unidade informada não existe!'
         ];
 
         $request->validate($regras, $feedback);
@@ -79,12 +79,13 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        $unidades = Unidade::all();
+        $unidadesMassa = UnMedidaMassa::all();
 
+        //dd($unidadesMassa);
         return view('app.produto.edit', [
             'titulo' => 'Produtos',
             'produto' => $produto,
-            'unidades' => $unidades
+            'unidadesMassa' => $unidadesMassa
         ]);
     }
 

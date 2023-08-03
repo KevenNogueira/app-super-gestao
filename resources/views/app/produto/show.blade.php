@@ -37,7 +37,7 @@
 
                     <tr>
                         <td>Unidade Médida</td>
-                        <td>{{ $produto->unidade_id }}</td>
+                        <td>{{ $produto->un_medida_massa_id }}</td>
                     </tr>
                 </table>
             </div>

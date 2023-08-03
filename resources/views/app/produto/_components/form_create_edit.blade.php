@@ -16,16 +16,16 @@
 <input type="text" name="peso" value="{{ $produto->peso ?? old('peso') }}" placeholder="peso" class="borda-preta">
 {{ $errors->has('peso') ? $errors->first('peso') : '' }}
 
-<select name="unidade_id">
+<select name="un_medida_massa_id">
     <option>-- Selecione a Unidade de Medida --</option>
 
-    @foreach ($unidades as $unidade)
-        <option value="{{ $unidade->id }}"
-            {{ ($produto->unidade_id ?? old('unidade_id')) == $unidade->id ? 'selected' : '' }}>
-            {{ $unidade->descricao }}</option>
+    @foreach ($unidadesMassa as $unidadeMassa)
+        <option value="{{ $unidadeMassa->id }}"
+            {{ ($produto->un_medida_massa_id ?? old('un_medida_massa_id')) == $unidadeMassa->id ? 'selected' : '' }}>
+            {{ $unidadeMassa->descricao }}</option>
     @endforeach
 </select>
-{{ $errors->has('unidade_id') ? $errors->first('unidade_id') : '' }}
+{{ $errors->has('un_medida_massa_id') ? $errors->first('un_medida_massa_id') : '' }}
 
 <button type="submit" class="borda-preta">Salvar</button>
 <form>

@@ -47,5 +47,40 @@ class UnMedidaMassaSeeder extends Seeder
             'unidade' => 'mg',
             'descricao' => 'Miligrama',
         ]);
+
+        UnMedidaMassa::create([
+            'unidade' => 'l',
+            'descricao' => 'Litro',
+        ]);
+
+        UnMedidaMassa::create([
+            'unidade' => 'kl',
+            'descricao' => 'Quilolitro',
+        ]);
+
+        UnMedidaMassa::create([
+            'unidade' => 'hl',
+            'descricao' => 'Hectolitro',
+        ]);
+
+        UnMedidaMassa::create([
+            'unidade' => 'dal',
+            'descricao' => 'Decalitro',
+        ]);
+
+        UnMedidaMassa::create([
+            'unidade' => 'dl',
+            'descricao' => 'Decilitro',
+        ]);
+
+        UnMedidaMassa::create([
+            'unidade' => 'cl',
+            'descricao' => 'Centilitro',
+        ]);
+
+        UnMedidaMassa::create([
+            'unidade' => 'ml',
+            'descricao' => 'Mililitro',
+        ]);
     }
 }

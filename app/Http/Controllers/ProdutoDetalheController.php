@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProdutoDetalhe;
-use App\Models\Unidade;
+use App\Models\UnMedidaComprimento;
 use Illuminate\Http\Request;
 
 class ProdutoDetalheController extends Controller
@@ -22,10 +22,10 @@ class ProdutoDetalheController extends Controller
      */
     public function create()
     {
-        $unidades = Unidade::all();
+        $unidadesComprimento = UnMedidaComprimento::all();
         return view('app.produto_detalhe.create', [
             'titulo' => 'Produto Detalhe',
-            'unidades' => $unidades
+            'unidadesComprimento' => $unidadesComprimento
         ]);
     }
 
@@ -51,12 +51,12 @@ class ProdutoDetalheController extends Controller
      */
     public function edit(ProdutoDetalhe $produtoDetalhe)
     {
-        $unidades = Unidade::all();
+        $unidadesComprimento = UnMedidaComprimento::all();
 
         return view('app.produto_detalhe.edit', [
             'titulo' => 'Produto Detalhe',
             'produto_detalhe' => $produtoDetalhe,
-            'unidades' => $unidades
+            'unidadesComprimento' => $unidadesComprimento
         ]);
     }
 
