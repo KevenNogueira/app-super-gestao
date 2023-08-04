@@ -218,13 +218,13 @@ span {
 }
 
 .login-card {
-    width: 30%;
+    width: 32%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .box-table {
-    width: 90%;
+    width: 98%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 65px;
@@ -239,4 +239,8 @@ th,
 td {
     border: 1px solid black;
     padding: 10px 0px 10px 0;
+}
+
+input[type="text"]:disabled {
+    background: #e0dddd72;
 }

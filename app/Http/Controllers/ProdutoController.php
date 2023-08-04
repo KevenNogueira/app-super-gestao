@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Http\Controllers\Controller;
+use App\Models\ProdutoDetalhe;
 use App\Models\UnMedidaMassa;
 use Illuminate\Http\Request;
 use Illuminate\Support\ViewErrorBag;

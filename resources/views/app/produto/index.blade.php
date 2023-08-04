@@ -20,7 +20,11 @@
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Peso</th>
-                            <th>Unidade Médida</th>
+                            <th>Unidade Massa </th>
+                            <th>Comprimento</th>
+                            <th>Largura</th>
+                            <th>Altura</th>
+                            <th>Unidade Comprimento</th>
                             <th>Visualização</th>
                             <th>Exclusão</th>
                             <th>Edição</th>
@@ -33,6 +37,10 @@
                                 <td>{{ $produto->descricao }}</td>
                                 <td>{{ $produto->peso }}</td>
                                 <td>{{ $produto->un_medida_massa_id }}</td>
+                                <td>{{ $produto->produtoDetalhe->comprimento ?? '' }}</td>
+                                <td>{{ $produto->produtoDetalhe->largura ?? '' }}</td>
+                                <td>{{ $produto->produtoDetalhe->altura ?? '' }}</td>
+                                <td>{{ $produto->produtoDetalhe->un_medida_comprimento_id ?? '' }}</td>
                                 <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualização</a></td>
                                 <td>
                                     <form id="form_{{ $produto->id }}" method="POST"
