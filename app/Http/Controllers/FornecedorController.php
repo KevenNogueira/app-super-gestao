@@ -111,4 +111,14 @@ class FornecedorController extends Controller
             'msg' => $msg
         ]);
     }
+
+    public function visualizar($id)
+    {
+        $fornecedor = Fornecedor::find($id);
+
+        return view('app.fornecedor.visualizar', [
+            'titulo' => 'Fornecedor',
+            'fornecedor' => $fornecedor
+        ]);
+    }
 }

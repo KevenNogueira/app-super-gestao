@@ -23,6 +23,7 @@
                             <th>Site</th>
                             <th>UF</th>
                             <th>E-mail</th>
+                            <th>Visualizar</th>
                             <th>Exclusão</th>
                             <th>Edição</th>
                         </tr>
@@ -35,6 +36,7 @@
                                 <td> <a href="{{ $fornecedor->site }}">{{ $fornecedor->site }}</a></td>
                                 <td>{{ $fornecedor->uf }}</td>
                                 <td>{{ $fornecedor->email }}</td>
+                                <td><a href="{{ route('app.fornecedor.visualizar', $fornecedor->id) }}">Visualizar</a></td>
                                 <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}">Exclusão</a></td>
                                 <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Edição</a></td>
                             </tr>

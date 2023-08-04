@@ -23,6 +23,12 @@ class CreateFornecedoresTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        // Criando coluna em Produtos para receber a Fk de Fornecedores
+        Schema::table('produtos', function (Blueprint $table) {
+            $table->unsignedBigInteger('fornecedor_id');
+            $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
+        });
     }
 
     /**
@@ -32,6 +38,12 @@ class CreateFornecedoresTable extends Migration
      */
     public function down()
     {
+        // Removendo a Fk e a coluna
+        Schema::table('produtos', function (Blueprint $table) {
+            $table->dropForeign('produtos_fornecedor_id_foreign');
+            $table->dropColumn('fornecedor_id');
+        });
+
         Schema::dropIfExists('fornecedores');
     }
 }

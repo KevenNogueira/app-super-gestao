@@ -132,5 +132,13 @@ class ProdutoDetalheSeeder extends Seeder
             'altura' => 18,
             'un_medida_comprimento_id' => 6
         ]);
+
+        ProdutoDetalhe::create([
+            'produto_id' => 16,
+            'comprimento' => 24.8,
+            'largura' => 8.4,
+            'altura' => 24.8,
+            'un_medida_comprimento_id' => 6
+        ]);
     }
 }

@@ -18,13 +18,11 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
+                            <th>Fornecedor</th>
                             <th>Descrição</th>
                             <th>Peso</th>
-                            <th>Unidade Massa </th>
-                            <th>Comprimento</th>
-                            <th>Largura</th>
-                            <th>Altura</th>
-                            <th>Unidade Comprimento</th>
+                            <th>Tamanho</th>
+                            <th>Unidade Medida</th>
                             <th>Visualização</th>
                             <th>Exclusão</th>
                             <th>Edição</th>
@@ -34,13 +32,16 @@
                         @foreach ($produtos as $produto)
                             <tr>
                                 <td>{{ $produto->nome }}</td>
+                                <td>{{ $produto->fornecedor->nome }}</td>
                                 <td>{{ $produto->descricao }}</td>
-                                <td>{{ $produto->peso }}</td>
-                                <td>{{ $produto->un_medida_massa_id }}</td>
-                                <td>{{ $produto->produtoDetalhe->comprimento ?? '' }}</td>
-                                <td>{{ $produto->produtoDetalhe->largura ?? '' }}</td>
-                                <td>{{ $produto->produtoDetalhe->altura ?? '' }}</td>
+                                <td>{{ $produto->peso }} - {{ $produto->un_medida_massa_id }}</td>
+                                <td>
+                                    {{ $produto->produtoDetalhe->comprimento ?? '' }} x
+                                    {{ $produto->produtoDetalhe->largura ?? '' }} x
+                                    {{ $produto->produtoDetalhe->altura ?? '' }}
+                                </td>
                                 <td>{{ $produto->produtoDetalhe->un_medida_comprimento_id ?? '' }}</td>
+
                                 <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualização</a></td>
                                 <td>
                                     <form id="form_{{ $produto->id }}" method="POST"
