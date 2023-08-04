@@ -17,6 +17,7 @@
             <ul>
                 <li><a href="{{ route('app.fornecedor.cadastro') }}">Cadastro</a></li>
                 <li><a href="{{ route('app.fornecedor') }}">Consulta</a></li>
+                <li><a href="{{ route('app.fornecedor.consulta') }}">Voltar</a></li>
             </ul>
         </div>
         <div class="informacao-pagina">
