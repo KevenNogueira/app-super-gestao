@@ -14,7 +14,11 @@
         </div>
         <div class="informacao-pagina">
             <div class="login-card">
-                @component('app.produto._components.form_create_edit', ['produto' => $produto, 'unidadesMassa' => $unidadesMassa])
+                @component('app.produto._components.form_create_edit', [
+                    'produto' => $produto,
+                    'unidadesMassa' => $unidadesMassa,
+                    'fornecedores' => $fornecedores,
+                ])
                 @endcomponent
             </div>
         </div>

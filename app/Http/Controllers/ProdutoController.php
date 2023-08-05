@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Http\Controllers\Controller;
-use App\Models\ProdutoDetalhe;
+use App\Models\Fornecedor;
 use App\Models\UnMedidaMassa;
 use Illuminate\Http\Request;
 use Illuminate\Support\ViewErrorBag;
@@ -31,9 +31,12 @@ class ProdutoController extends Controller
     public function create()
     {
         $unidadesMassa = UnMedidaMassa::all();
+        $fornecedores = Fornecedor::all();
+
         return view('app.produto.create', [
             'titulo' => 'Produtos',
-            'unidadesMassa' => $unidadesMassa
+            'unidadesMassa' => $unidadesMassa,
+            'fornecedores' => $fornecedores
         ]);
     }
 
@@ -46,7 +49,8 @@ class ProdutoController extends Controller
             'nome' => 'required|min:3|max:100',
             'descricao' => 'required|min:3|max:2000',
             'peso' => 'required|integer',
-            'un_medida_massa_id' => 'exists:un_medida_massas,id'
+            'un_medida_massa_id' => 'exists:un_medida_massas,id',
+            'fornecedor_id' => 'exists:fornecedores,id'
         ];
 
         $feedback = [
@@ -55,7 +59,8 @@ class ProdutoController extends Controller
             'nome.max' => 'O nome deve conter 100 caracteres máximos!',
             'descricao.max' => 'A descrição deve conter 2.000 caracteres máximos!',
             'peso' => 'O peso deve ser um número inteiro!',
-            'un_medida_massa_id.exists' => 'A unidade informada não existe!'
+            'un_medida_massa_id.exists' => 'A unidade informada não existe!',
+            'fornecedor_id.exists' => 'Fornecedor não existe!'
         ];
 
         $request->validate($regras, $feedback);
@@ -70,7 +75,7 @@ class ProdutoController extends Controller
     public function show(Produto $produto)
     {
         return view('app.produto.show', [
-            'titulo' => 'Produtos',
+            'titulo' => 'Produto',
             'produto' => $produto
         ]);
     }
@@ -81,12 +86,13 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidadesMassa = UnMedidaMassa::all();
+        $fornecedores = Fornecedor::all();
 
-        //dd($unidadesMassa);
         return view('app.produto.edit', [
             'titulo' => 'Produtos',
             'produto' => $produto,
-            'unidadesMassa' => $unidadesMassa
+            'unidadesMassa' => $unidadesMassa,
+            'fornecedores' => $fornecedores
         ]);
     }
 
@@ -95,6 +101,26 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
+        $regras = [
+            'nome' => 'required|min:3|max:100',
+            'descricao' => 'required|min:3|max:2000',
+            'peso' => 'required|integer',
+            'un_medida_massa_id' => 'exists:un_medida_massas,id',
+            'fornecedor_id' => 'exists:fornecedores,id'
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute deve ser preenchido!',
+            'min' => 'O campo :attribute deve conter 3 caracteres mínimos!',
+            'nome.max' => 'O nome deve conter 100 caracteres máximos!',
+            'descricao.max' => 'A descrição deve conter 2.000 caracteres máximos!',
+            'peso' => 'O peso deve ser um número inteiro!',
+            'un_medida_massa_id.exists' => 'A unidade informada não existe!',
+            'fornecedor_id.exists' => 'Fornecedor não existe!'
+        ];
+
+        $request->validate($regras, $feedback);
+
         $produto->update($request->all());
 
         return redirect()->route('produto.show', ['produto' => $produto->id]);

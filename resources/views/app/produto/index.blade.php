@@ -36,11 +36,11 @@
                                 <td>{{ $produto->descricao }}</td>
                                 <td>{{ $produto->peso }} - {{ $produto->un_medida_massa_id }}</td>
                                 <td>
-                                    {{ $produto->produtoDetalhe->comprimento ?? '' }} x
-                                    {{ $produto->produtoDetalhe->largura ?? '' }} x
-                                    {{ $produto->produtoDetalhe->altura ?? '' }}
+                                    {{ $produto->produtoDetalhe->comprimento ?? 'N/A' }} x
+                                    {{ $produto->produtoDetalhe->largura ?? 'N/A' }} x
+                                    {{ $produto->produtoDetalhe->altura ?? 'N/A' }}
                                 </td>
-                                <td>{{ $produto->produtoDetalhe->un_medida_comprimento_id ?? '' }}</td>
+                                <td>{{ $produto->produtoDetalhe->un_medida_comprimento_id ?? 'N/A' }}</td>
 
                                 <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualização</a></td>
                                 <td>
