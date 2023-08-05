@@ -30,7 +30,7 @@
                             <td>{{ $produto->nome }}</td>
                             <td>{{ $produto->descricao }}</td>
                             <td>{{ $produto->peso }}</td>
-                            <td>{{ $produto->un_medida_massa_id }}</td>
+                            <td>{{ $produto->unMedidaMassa->unidade }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -80,7 +80,7 @@
                             <td>{{ $produto->produtoDetalhe->comprimento ?? 'N/A' }}</td>
                             <td>{{ $produto->produtoDetalhe->largura ?? 'N/A' }}</td>
                             <td>{{ $produto->produtoDetalhe->altura ?? 'N/A' }}</td>
-                            <td>{{ $produto->produtoDetalhe->un_medida_comprimento_id ?? 'N/A' }}</td>
+                            <td>{{ $produto->produtoDetalhe->unMedidaComprimento->unidade ?? 'N/A' }}</td>
                         </tr>
                     </tbody>
                 </table>

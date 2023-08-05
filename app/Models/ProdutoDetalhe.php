@@ -15,4 +15,9 @@ class ProdutoDetalhe extends Model
     {
         return $this->belongsTo(Produto::class);
     }
+
+    public function unMedidaComprimento(): BelongsTo
+    {
+        return $this->belongsTo(UnMedidaComprimento::class);
+    }
 }

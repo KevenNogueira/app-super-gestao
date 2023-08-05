@@ -22,7 +22,6 @@
                             <th>Descrição</th>
                             <th>Peso</th>
                             <th>Tamanho</th>
-                            <th>Unidade Medida</th>
                             <th>Visualização</th>
                             <th>Exclusão</th>
                             <th>Edição</th>
@@ -34,13 +33,13 @@
                                 <td>{{ $produto->nome }}</td>
                                 <td>{{ $produto->fornecedor->nome }}</td>
                                 <td>{{ $produto->descricao }}</td>
-                                <td>{{ $produto->peso }} - {{ $produto->un_medida_massa_id }}</td>
+                                <td>{{ $produto->peso }} {{ $produto->unMedidaMassa->unidade }}</td>
                                 <td>
                                     {{ $produto->produtoDetalhe->comprimento ?? 'N/A' }} x
                                     {{ $produto->produtoDetalhe->largura ?? 'N/A' }} x
-                                    {{ $produto->produtoDetalhe->altura ?? 'N/A' }}
+                                    {{ $produto->produtoDetalhe->altura ?? 'N/A' }} -
+                                    {{ $produto->produtoDetalhe->unMedidaComprimento->unidade ?? 'N/A' }}
                                 </td>
-                                <td>{{ $produto->produtoDetalhe->un_medida_comprimento_id ?? 'N/A' }}</td>
 
                                 <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualização</a></td>
                                 <td>

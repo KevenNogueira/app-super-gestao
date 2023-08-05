@@ -58,13 +58,13 @@
                             <tr>
                                 <td>{{ $produto->nome }}</td>
                                 <td>{{ $produto->descricao }}</td>
-                                <td>{{ $produto->peso }} - {{ $produto->un_medida_massa_id }}</td>
+                                <td>{{ $produto->peso }} {{ $produto->unMedidaMassa->unidade }}</td>
                                 <td>
                                     {{ $produto->produtoDetalhe->comprimento ?? 'N/A' }} x
                                     {{ $produto->produtoDetalhe->largura ?? 'N/A' }} x
                                     {{ $produto->produtoDetalhe->altura ?? 'N/A' }}
                                 </td>
-                                <td>{{ $produto->produtoDetalhe->un_medida_comprimento_id ?? 'N/A' }}</td>
+                                <td>{{ $produto->produtoDetalhe->unMedidaComprimento->unidade ?? 'N/A' }}</td>
                             </tr>
                         @endforeach
                     </tbody>

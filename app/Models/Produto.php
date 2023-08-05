@@ -22,4 +22,9 @@ class Produto extends Model
     {
         return $this->belongsTo(Fornecedor::class);
     }
+
+    public function unMedidaMassa(): BelongsTo
+    {
+        return $this->belongsTo(UnMedidaMassa::class);
+    }
 }
