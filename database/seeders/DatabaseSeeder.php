@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             UnMedidaComprimentoSeeder::class,
             UnMedidaMassaSeeder::class,
             ProdutoSeeder::class,
-            ProdutoDetalheSeeder::class
+            ProdutoDetalheSeeder::class,
+            ClienteSeeder::class,
         ]);
     }
 }

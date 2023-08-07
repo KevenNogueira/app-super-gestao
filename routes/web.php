@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoProdutoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProdutoDetalheController;
 use Illuminate\Support\Facades\Route;
@@ -36,8 +38,6 @@ Route::middleware('autencicacao')->prefix('/app')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('app.home');
 
-    Route::get('/cliente', [ClienteController::class, 'index'])->name('app.cliente');
-
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
     Route::post('/fornecedor/consulta', [FornecedorController::class, 'listar'])->name('app.fornecedor.consulta');
     Route::get('/fornecedor/consulta', [FornecedorController::class, 'listar'])->name('app.fornecedor.consulta');
@@ -50,6 +50,12 @@ Route::middleware('autencicacao')->prefix('/app')->group(function () {
     Route::resource('produto', ProdutoController::class);
 
     Route::resource('produto-detalhe', ProdutoDetalheController::class);
+
+    Route::resource('cliente', ClienteController::class);
+
+    Route::resource('pedido', PedidoController::class);
+
+    Route::resource('pedido-produto', PedidoProdutoController::class);
 
     Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');
 });
