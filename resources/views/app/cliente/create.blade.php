@@ -14,7 +14,7 @@
         </div>
         <div class="informacao-pagina">
             <div class="login-card">
-                @component('app.cliente._components.form_create_edit', ['titulo' => 'Cliente'])
+                @component('app.cliente._components.form_create_edit')
                 @endcomponent
             </div>
         </div>

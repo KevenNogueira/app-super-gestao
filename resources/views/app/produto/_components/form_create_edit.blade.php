@@ -43,4 +43,4 @@
 {{ $errors->has('un_medida_massa_id') ? $errors->first('un_medida_massa_id') : '' }}
 
 <button type="submit" class="borda-preta">Salvar</button>
-<form>
+</form>

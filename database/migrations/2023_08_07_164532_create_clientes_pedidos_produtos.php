@@ -24,6 +24,7 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cliente_id');
+            $table->integer('num_pedido');
             $table->timestamps();
 
             $table->foreign('cliente_id')->references('id')->on('clientes');

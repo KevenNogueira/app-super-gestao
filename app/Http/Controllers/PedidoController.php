@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cliente;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -12,7 +14,12 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = Pedido::simplePaginate(10);
+
+        return view('app.pedido.index', [
+            'titulo' => 'Pedido',
+            'pedidos' => $pedidos
+        ]);
     }
 
     /**
@@ -20,7 +27,12 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Cliente::all();
+
+        return view('app.pedido.create', [
+            'titulo' => 'Pedido',
+            'clientes' => $clientes
+        ]);
     }
 
     /**
@@ -28,15 +40,33 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+        $regras =  [
+            'cliente_id' => 'exists:clientes,id',
+        ];
+
+        $feedback = [
+            'cliente_id.exists' => 'Cliente não existe!'
+        ];
+
+        $request->validate($regras, $feedback);
+
+        $pedido = $request->all();
+        $pedido['num_pedido'] = fake()->unique()->randomNumber(6, true);
+
+        Pedido::create($pedido);
+
+        return redirect()->route('pedido.index');
+    }
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Pedido $pedido)
     {
-        //
+        return view('app.pedido.show', [
+            'titulo' => 'Pedido',
+            'pedido' => $pedido
+        ]);
     }
 
     /**
@@ -60,6 +90,8 @@ class PedidoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Pedido::destroy($id);
+
+        return redirect()->route('pedido.index');
     }
 }

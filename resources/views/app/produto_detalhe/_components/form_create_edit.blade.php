@@ -40,4 +40,4 @@
 {{ $errors->has('un_medida_comprimento_id') ? $errors->first('un_medida_comprimento_id') : '' }}
 
 <button type="submit" class="borda-preta">Salvar</button>
-<form>
+</form>

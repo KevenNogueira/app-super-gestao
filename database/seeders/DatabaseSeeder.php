@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ProdutoSeeder::class,
             ProdutoDetalheSeeder::class,
             ClienteSeeder::class,
+            PedidoSeeder::class,
         ]);
     }
 }

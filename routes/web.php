@@ -3,7 +3,6 @@
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FornecedorController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\LoginController;
@@ -36,8 +35,6 @@ Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login'
 
 Route::middleware('autencicacao')->prefix('/app')->group(function () {
 
-    Route::get('/home', [HomeController::class, 'index'])->name('app.home');
-
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
     Route::post('/fornecedor/consulta', [FornecedorController::class, 'listar'])->name('app.fornecedor.consulta');
     Route::get('/fornecedor/consulta', [FornecedorController::class, 'listar'])->name('app.fornecedor.consulta');
@@ -55,7 +52,8 @@ Route::middleware('autencicacao')->prefix('/app')->group(function () {
 
     Route::resource('pedido', PedidoController::class);
 
-    Route::resource('pedido-produto', PedidoProdutoController::class);
+    Route::get('/pedido-produto/create/{pedido}', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
+    Route::post('/pedido-produto/store/{pedido}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
 
     Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');
 });

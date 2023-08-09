@@ -5,16 +5,16 @@
 @section('conteudo')
     <div class="conteudo-pagina">
         <div class="titulo-pagina-app">
-            <h3>Cadastro de Detalhe dos Produto</h3>
+            <h3>Cadastro de Pedido</h3>
         </div>
         <div class="menu">
             <ul>
-                <li><a href="{{ route('cliente.index') }}">Voltar</a></li>
+                <li><a href="{{ route('pedido.index') }}">Voltar</a></li>
             </ul>
         </div>
         <div class="informacao-pagina">
             <div class="login-card">
-                @component('app.cliente._components.form_create_edit', ['cliente' => $cliente])
+                @component('app.pedido._components.form_create', ['clientes' => $clientes])
                 @endcomponent
             </div>
         </div>

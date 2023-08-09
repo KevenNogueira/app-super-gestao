@@ -1,4 +1,4 @@
-<div class="rodape">
+<footer class="rodape">
     <div class="redes-sociais">
         <h2>Redes sociais</h2>
         <img src="{{ asset('img/facebook.png') }}">
@@ -15,4 +15,4 @@
         <h2>Localização</h2>
         <img src="{{ asset('img/mapa.png') }}">
     </div>
-</div>
+</footer>
