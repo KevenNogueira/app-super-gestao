@@ -17,7 +17,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID Cliente</th>
+                            <th>Cliente</th>
                             <th>Numero do Pedido</th>
                             <th>Data do Pedido</th>
                             <th>Adicionar Produtos</th>
@@ -28,9 +28,9 @@
                     <tbody>
                         @foreach ($pedidos as $pedido)
                             <tr>
-                                <td>{{ $pedido->cliente_id }}</td>
+                                <td>{{ $pedido->cliente->nome }}</td>
                                 <td>{{ $pedido->num_pedido }}</td>
-                                <td>{{ $pedido->created_at }}</td>
+                                <td>{{ $pedido->created_at->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">
                                         Adicionar Produto

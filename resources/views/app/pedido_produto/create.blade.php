@@ -55,6 +55,7 @@
                                 <th>Descrição</th>
                                 <th>Peso</th>
                                 <th>Unidade Massa</th>
+                                <th>Data da Inclusão</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,6 +65,7 @@
                                     <td>{{ $produto->descricao }}</td>
                                     <td>{{ $produto->peso }}</td>
                                     <td>{{ $produto->unMedidaMassa->unidade }}</td>
+                                    <td>{{ $produto->pivot->created_at->format('d/m/Y') }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
