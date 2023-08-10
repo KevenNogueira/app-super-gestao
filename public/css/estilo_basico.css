@@ -2,6 +2,7 @@ html,
 body {
     margin: 0;
     position: relative;
+    height: auto;
     min-height: 100%;
     font-family: "Roboto", sans-serif;
 }
@@ -124,18 +125,17 @@ button:hover {
     width: 100%;
     height: 100%;
     min-height: 800px;
+    background-color: #2a9ee2;
 }
 
 .esquerda {
     float: left;
-    background-color: #268fd0;
     width: 60%;
     height: 100%;
 }
 
 .direita {
     float: right;
-    background-color: #2a9ee2;
     width: 40%;
     height: 100%;
 }
@@ -246,4 +246,11 @@ td {
 
 input[type="text"]:disabled {
     background: #e0dddd72;
+}
+
+.itens {
+    text-align: left;
+    font-size: 15px;
+    padding-top: 10px;
+    margin-bottom: 8px;
 }

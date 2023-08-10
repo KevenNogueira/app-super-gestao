@@ -25,7 +25,7 @@
                     @csrf
 
                     <select name="produto_id" class="borda-preta">
-                        <option>-- Selecione o Cliente --</option>
+                        <option>-- Selecione o Produto --</option>
 
                         @foreach ($produtos as $produto)
                             <option value="{{ $produto->id }}" {{ old('produto_id') == $produto->id ? 'selected' : '' }}>
