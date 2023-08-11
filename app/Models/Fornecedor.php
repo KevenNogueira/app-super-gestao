@@ -14,7 +14,13 @@ class Fornecedor extends Model
 
     protected $table = 'fornecedores';
 
-    protected $fillable = ['nome', 'cnpj', 'uf', 'email', 'site'];
+    protected $fillable = [
+        'cnpj',
+        'nome',
+        'uf',
+        'email',
+        'site'
+    ];
 
     public function produtos(): HasMany
     {

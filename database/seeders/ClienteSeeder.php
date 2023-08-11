@@ -13,6 +13,6 @@ class ClienteSeeder extends Seeder
      */
     public function run(): void
     {
-        Cliente::factory()->count(15)->create();
+        Cliente::factory()->count(10)->create();
     }
 }

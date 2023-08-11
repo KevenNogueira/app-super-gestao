@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class UnMedidaMassa extends Model
 {
     use HasFactory;
-    protected $fillable = ['unidade', 'descricao'];
+
+    protected $fillable = [
+        'unidade',
+        'descricao'
+    ];
 }

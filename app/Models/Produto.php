@@ -13,10 +13,19 @@ class Produto extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['nome', 'descricao', 'peso', 'fornecedor_id', 'un_medida_massa_id'];
+    protected $fillable = [
+        'fornecedor_cnpj',
+        'nome',
+        'descricao',
+        'peso',
+        'un_medida_massa_id',
+        'comprimento',
+        'largura',
+        'altura',
+        'un_medida_comprimento_id'
+    ];
 
     public function produtoDetalhe(): HasOne
-
     {
         return $this->hasOne(ProdutoDetalhe::class);
     }

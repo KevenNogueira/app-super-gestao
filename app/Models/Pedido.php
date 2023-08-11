@@ -11,7 +11,10 @@ class Pedido extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['cliente_id', 'num_pedido'];
+    protected $fillable = [
+        'num_pedido',
+        'cliente_cpf'
+    ];
 
     public function produtos(): BelongsToMany
     {
