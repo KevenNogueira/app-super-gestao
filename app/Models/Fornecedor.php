@@ -13,7 +13,8 @@ class Fornecedor extends Model
     use SoftDeletes;
 
     protected $table = 'fornecedores';
-    protected $fillable = ['nome', 'cnpj', 'site', 'uf', 'email'];
+
+    protected $fillable = ['nome', 'cnpj', 'uf', 'email', 'site'];
 
     public function produtos(): HasMany
     {

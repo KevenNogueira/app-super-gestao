@@ -18,9 +18,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adicionar o relacionamento com a tabela produto_detalhes
-        Schema::table('produto_detalhes', function (Blueprint $table) {
-            $table->unsignedBigInteger('un_medida_comprimento_id');
+        // Adicionar o relacionamento com a tabela produtos
+        Schema::table('produtos', function (Blueprint $table) {
+            $table->unsignedBigInteger('un_medida_comprimento_id')->after('altura');
             $table->foreign('un_medida_comprimento_id')->references('id')->on('un_medida_comprimentos');
         });
     }
@@ -31,9 +31,9 @@ return new class extends Migration
     public function down(): void
     {
         // Remover o relacionamento com a tabela produto_detalhes
-        Schema::table('produto_detalhes', function (Blueprint $table) {
+        Schema::table('produtos', function (Blueprint $table) {
             // Remover a fk
-            $table->dropForeign('produto_detalhes_un_medida_comprimento_id_foreign'); //[table]_[coluna]_foreign
+            $table->dropForeign('produtos_un_medida_comprimento_id_foreign'); //[table]_[coluna]_foreign
             // Remover a coluna unidade_id
             $table->dropColumn('un_medida_comprimento_id');
         });

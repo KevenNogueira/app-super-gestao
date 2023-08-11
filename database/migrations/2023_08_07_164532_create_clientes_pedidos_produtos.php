@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
             $table->string('nome', 50);
-            $table->string('cpf', 11);
+            $table->string('cpf', 11)->primary();
             $table->string('email', 100);
             $table->string('telefone', 20);
             $table->timestamps();
@@ -22,21 +21,20 @@ return new class extends Migration
         });
 
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('cliente_id');
-            $table->integer('num_pedido');
+            $table->string('cliente_cpf', 11);
+            $table->integer('num_pedido')->primary();
             $table->timestamps();
 
-            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('cliente_cpf')->references('cpf')->on('clientes');
         });
 
         Schema::create('pedidos_produtos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pedido_id');
+            $table->integer('num_pedido');
             $table->unsignedBigInteger('produto_id');
             $table->timestamps();
 
-            $table->foreign('pedido_id')->references('id')->on('pedidos');
+            $table->foreign('num_pedido')->references('num_pedido')->on('pedidos');
             $table->foreign('produto_id')->references('id')->on('produtos');
         });
     }

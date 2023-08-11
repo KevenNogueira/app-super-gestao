@@ -20,7 +20,7 @@ return new class extends Migration
 
         // Adicionar o relacionamento com a tabela produtos]
         Schema::table('produtos', function (Blueprint $table) {
-            $table->unsignedBigInteger('un_medida_massa_id');
+            $table->unsignedBigInteger('un_medida_massa_id')->after('peso');
             $table->foreign('un_medida_massa_id')->references('id')->on('un_medida_massas');
         });
     }

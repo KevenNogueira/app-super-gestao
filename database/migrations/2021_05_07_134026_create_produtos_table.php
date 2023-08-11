@@ -16,9 +16,13 @@ class CreateProdutosTable extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 100);
-            $table->text('descricao')->nullable();
-            $table->float('peso', 8, 2)->nullable();
+            $table->text('descricao');
+            $table->float('peso', 8, 2);
+            $table->float('comprimento', 8, 2);
+            $table->float('largura', 8, 2);
+            $table->float('altura', 8, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
