@@ -9,7 +9,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PedidoProdutoController;
 use App\Http\Controllers\ProdutoController;
-use App\Http\Controllers\ProdutoDetalheController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,17 +35,20 @@ Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login'
 Route::middleware('autencicacao')->prefix('/app')->group(function () {
 
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
+
     Route::post('/fornecedor/consulta', [FornecedorController::class, 'listar'])->name('app.fornecedor.consulta');
     Route::get('/fornecedor/consulta', [FornecedorController::class, 'listar'])->name('app.fornecedor.consulta');
+
     Route::get('/fornecedor/cadastro', [FornecedorController::class, 'cadastro'])->name('app.fornecedor.cadastro');
     Route::post('/fornecedor/cadastro', [FornecedorController::class, 'cadastro'])->name('app.fornecedor.cadastro');
-    Route::get('/fornecedor/editar/{id}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
-    Route::get('/fornecedor/excluir/{id}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
-    Route::get('/fornecedor/visualizar/{id}', [FornecedorController::class, 'visualizar'])->name('app.fornecedor.visualizar');
+
+    Route::get('/fornecedor/editar/{cnpj}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
+    Route::post('/fornecedor/editar/{cnpj}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
+
+    Route::get('/fornecedor/excluir/{cnpj}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
+    Route::get('/fornecedor/visualizar/{cnpj}', [FornecedorController::class, 'visualizar'])->name('app.fornecedor.visualizar');
 
     Route::resource('produto', ProdutoController::class);
-
-    Route::resource('produto-detalhe', ProdutoDetalheController::class);
 
     Route::resource('cliente', ClienteController::class);
 

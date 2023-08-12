@@ -35,6 +35,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $regras = [
             'nome' => 'required|min:3|max:50',
             'cpf' => 'required|min:11|max:11',
@@ -75,9 +76,9 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $cpf)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::find($cpf);
         return view('app.cliente.edit', [
             'titulo' => 'Cliente',
             'cliente' => $cliente,
@@ -87,7 +88,7 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $cpf)
     {
         $regras = [
             'nome' => 'required|min:3|max:50',
@@ -111,7 +112,7 @@ class ClienteController extends Controller
 
         $request->validate($regras, $feedback);
 
-        Cliente::find($id)->update($request->all());
+        Cliente::find($cpf)->update($request->all());
 
         return redirect()->route('cliente.index');
     }

@@ -33,7 +33,7 @@ class FornecedorController extends Controller
         $msg = '';
 
         //Cadastro de Fornecedores
-        if (!empty($request->input('_token') && empty($request->input('id')))) {
+        if (!empty($request->input('_token'))) {
             $regras = [
                 'nome' => 'required|min:3|max:50',
                 'cnpj' => 'required|min:14|max:14',
@@ -54,14 +54,25 @@ class FornecedorController extends Controller
 
             $request->validate($regras, $feedback);
 
+
             Fornecedor::create($request->all());
 
             $msg = 'Registro incluido com Sucesso';
         }
 
+        return view('app.fornecedor.cadastro', [
+            'titulo' => 'Fornecedores',
+            'msg' => $msg
+        ]);
+    }
+
+    public function editar(Request $request, $cnpj)
+    {
         //Atualização de registro Fornecedores
-        if (!empty($request->input('_token') && !empty($request->input('id')))) {
-            $fornecedor = Fornecedor::find($request->input('id'));
+        if (!empty($request->input('_token'))) {
+
+            $fornecedor = Fornecedor::find($cnpj);
+
             $update = $fornecedor->update($request->all());
 
             if ($update) {
@@ -74,28 +85,19 @@ class FornecedorController extends Controller
                 'titulo' => 'Fornecedores',
                 'msg' => $msg
             ]);
-        }
+        };
 
-        return view('app.fornecedor.cadastro', [
-            'titulo' => 'Fornecedores',
-            'msg' => $msg
-        ]);
-    }
+        $fornecedor = Fornecedor::find($cnpj);
 
-    public function editar($id)
-    {
-
-        $fornecedor = Fornecedor::find($id);
-
-        return view('app.fornecedor.cadastro', [
+        return view('app.fornecedor.editar', [
             'titulo' => 'Fornecedores',
             'fornecedor' => $fornecedor
         ]);
     }
 
-    public function excluir($id)
+    public function excluir($cnpj)
     {
-        if (Fornecedor::find($id)->delete()) {
+        if (Fornecedor::find($cnpj)->delete()) {
             $msg = 'Exclusão realizada com sucesso!';
 
             return view('app.fornecedor.index', [
@@ -112,9 +114,9 @@ class FornecedorController extends Controller
         ]);
     }
 
-    public function visualizar($id)
+    public function visualizar($cnpj)
     {
-        $fornecedor = Fornecedor::find($id);
+        $fornecedor = Fornecedor::find($cnpj);
 
         return view('app.fornecedor.visualizar', [
             'titulo' => 'Fornecedor',

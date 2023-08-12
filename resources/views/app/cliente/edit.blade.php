@@ -5,7 +5,7 @@
 @section('conteudo')
     <div class="conteudo-pagina">
         <div class="titulo-pagina-app">
-            <h3>Cadastro de Detalhe dos Produto</h3>
+            <h3>Edição de Cliente</h3>
         </div>
         <div class="menu">
             <ul>

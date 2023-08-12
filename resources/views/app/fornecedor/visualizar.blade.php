@@ -50,7 +50,6 @@
                             <th>Descrição</th>
                             <th>Peso</th>
                             <th>Tamanho</th>
-                            <th>Unidade Medida</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,11 +59,11 @@
                                 <td>{{ $produto->descricao }}</td>
                                 <td>{{ $produto->peso }} {{ $produto->unMedidaMassa->unidade }}</td>
                                 <td>
-                                    {{ $produto->produtoDetalhe->comprimento ?? 'N/A' }} x
-                                    {{ $produto->produtoDetalhe->largura ?? 'N/A' }} x
-                                    {{ $produto->produtoDetalhe->altura ?? 'N/A' }}
+                                    {{ $produto->comprimento }} x
+                                    {{ $produto->largura }} x
+                                    {{ $produto->altura }}
+                                    {{ $produto->unMedidaComprimento->unidade }}
                                 </td>
-                                <td>{{ $produto->produtoDetalhe->unMedidaComprimento->unidade ?? 'N/A' }}</td>
                             </tr>
                         @endforeach
                     </tbody>

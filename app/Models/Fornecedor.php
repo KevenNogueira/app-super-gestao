@@ -22,6 +22,10 @@ class Fornecedor extends Model
         'site'
     ];
 
+    protected $primaryKey = 'cnpj';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     public function produtos(): HasMany
     {
         return $this->hasMany(Produto::class);

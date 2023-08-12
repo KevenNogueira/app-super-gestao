@@ -17,4 +17,8 @@ class Cliente extends Model
         'email',
         'telefone'
     ];
+
+    protected $primaryKey = 'cpf';
+    public $incrementing = false;
+    protected $keyType = 'string';
 }

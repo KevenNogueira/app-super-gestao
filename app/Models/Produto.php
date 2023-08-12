@@ -25,11 +25,6 @@ class Produto extends Model
         'un_medida_comprimento_id'
     ];
 
-    public function produtoDetalhe(): HasOne
-    {
-        return $this->hasOne(ProdutoDetalhe::class);
-    }
-
     public function fornecedor(): BelongsTo
     {
         return $this->belongsTo(Fornecedor::class);
@@ -38,5 +33,10 @@ class Produto extends Model
     public function unMedidaMassa(): BelongsTo
     {
         return $this->belongsTo(UnMedidaMassa::class);
+    }
+
+    public function unMedidaComprimento(): BelongsTo
+    {
+        return $this->belongsTo(UnMedidaComprimento::class);
     }
 }

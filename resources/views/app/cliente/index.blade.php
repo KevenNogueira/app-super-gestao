@@ -33,19 +33,19 @@
                                 <td>{{ $cliente->cpf }}</td>
                                 <td>{{ $cliente->email }}</td>
                                 <td>{{ $cliente->telefone }}</td>
-                                <td><a href="{{ route('cliente.show', ['cliente' => $cliente->id]) }}">Visualização</a></td>
+                                <td><a href="{{ route('cliente.show', ['cliente' => $cliente->cpf]) }}">Visualização</a></td>
                                 <td>
-                                    <form id="form_{{ $cliente->id }}" method="POST"
-                                        action="{{ route('cliente.destroy', ['cliente' => $cliente->id]) }}">
+                                    <form id="form_{{ $cliente->cpf }}" method="POST"
+                                        action="{{ route('cliente.destroy', ['cliente' => $cliente->cpf]) }}">
 
                                         @method('DELETE')
                                         @csrf
                                         <a href="#"
-                                            onclick="document.getElementById('form_{{ $cliente->id }}').submit()">Exclusão</a>
+                                            onclick="document.getElementById('form_{{ $cliente->cpf }}').submit()">Exclusão</a>
 
                                     </form>
                                 </td>
-                                <td><a href="{{ route('cliente.edit', ['cliente' => $cliente->id]) }}">Edição</a>
+                                <td><a href="{{ route('cliente.edit', ['cliente' => $cliente->cpf]) }}">Edição</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -36,9 +36,9 @@
                                 <td> <a href="{{ $fornecedor->site }}">{{ $fornecedor->site }}</a></td>
                                 <td>{{ $fornecedor->uf }}</td>
                                 <td>{{ $fornecedor->email }}</td>
-                                <td><a href="{{ route('app.fornecedor.visualizar', $fornecedor->id) }}">Visualizar</a></td>
-                                <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}">Exclusão</a></td>
-                                <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Edição</a></td>
+                                <td><a href="{{ route('app.fornecedor.visualizar', $fornecedor->cnpj) }}">Visualizar</a></td>
+                                <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->cnpj) }}">Exclusão</a></td>
+                                <td><a href="{{ route('app.fornecedor.editar', $fornecedor->cnpj) }}">Edição</a></td>
                             </tr>
                         @endforeach
                     </tbody>

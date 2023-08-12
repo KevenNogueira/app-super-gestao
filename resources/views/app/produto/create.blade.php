@@ -16,6 +16,7 @@
             <div class="login-card">
                 @component('app.produto._components.form_create_edit', [
                     'unidadesMassa' => $unidadesMassa,
+                    'unidadesComprimento' => $unidadesComprimento,
                     'fornecedores' => $fornecedores,
                 ])
                 @endcomponent

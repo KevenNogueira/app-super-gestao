@@ -17,20 +17,26 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Peso</th>
-                            <th>Unidade Massa</th>
+                            <th>Tamanho</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ $produto->id }}</td>
                             <td>{{ $produto->nome }}</td>
                             <td>{{ $produto->descricao }}</td>
-                            <td>{{ $produto->peso }}</td>
-                            <td>{{ $produto->unMedidaMassa->unidade }}</td>
+                            <td>
+                                {{ $produto->peso }} -
+                                {{ $produto->unMedidaMassa->unidade }}
+                            </td>
+                            <td>
+                                {{ $produto->comprimento }} x
+                                {{ $produto->largura }} x
+                                {{ $produto->altura }}
+                                {{ $produto->unMedidaComprimento->unidade }}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -60,27 +66,6 @@
                             <td> <a href="{{ $produto->fornecedor->site }}">{{ $produto->fornecedor->site }}</a></td>
                             <td>{{ $produto->fornecedor->uf }}</td>
                             <td>{{ $produto->fornecedor->email }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="box-table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Comprimento</th>
-                            <th>Largura</th>
-                            <th>Altura</th>
-                            <th>Unidade de Medida</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ $produto->produtoDetalhe->comprimento ?? 'N/A' }}</td>
-                            <td>{{ $produto->produtoDetalhe->largura ?? 'N/A' }}</td>
-                            <td>{{ $produto->produtoDetalhe->altura ?? 'N/A' }}</td>
-                            <td>{{ $produto->produtoDetalhe->unMedidaComprimento->unidade ?? 'N/A' }}</td>
                         </tr>
                     </tbody>
                 </table>

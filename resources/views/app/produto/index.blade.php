@@ -35,10 +35,10 @@
                                 <td>{{ $produto->descricao }}</td>
                                 <td>{{ $produto->peso }} {{ $produto->unMedidaMassa->unidade }}</td>
                                 <td>
-                                    {{ $produto->produtoDetalhe->comprimento ?? 'N/A' }} x
-                                    {{ $produto->produtoDetalhe->largura ?? 'N/A' }} x
-                                    {{ $produto->produtoDetalhe->altura ?? 'N/A' }} -
-                                    {{ $produto->produtoDetalhe->unMedidaComprimento->unidade ?? 'N/A' }}
+                                    {{ $produto->comprimento }} x
+                                    {{ $produto->largura }} x
+                                    {{ $produto->altura }}
+                                    {{ $produto->unMedidaComprimento->unidade }}
                                 </td>
 
                                 <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualização</a></td>
