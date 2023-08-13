@@ -12,10 +12,10 @@ class Cliente extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'cpj',
         'nome',
+        'cpf',
         'email',
-        'telefone'
+        'telefone',
     ];
 
     protected $primaryKey = 'cpf';

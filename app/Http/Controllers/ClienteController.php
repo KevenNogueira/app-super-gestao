@@ -13,7 +13,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::simplePaginate(10);
+        $clientes = Cliente::orderBy('created_at', 'desc')->simplePaginate(10);
         return view('app.cliente.index', [
             'titulo' => 'Clientes',
             'clientes' => $clientes,
@@ -56,6 +56,15 @@ class ClienteController extends Controller
         ];
 
         $request->validate($regras, $feedback);
+
+        //dd($request->get('cpf'));
+
+        /*         Cliente::create([
+            'nome' => $request('nome'),
+            'cpf' => $request('cpf'),
+            'email' => $request('email'),
+            'telefone' => $request('telefone'),
+        ]); */
 
         Cliente::create($request->all());
 
