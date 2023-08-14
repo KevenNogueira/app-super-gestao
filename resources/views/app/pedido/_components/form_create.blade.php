@@ -1,17 +1,16 @@
 <form method="post" action="{{ route('pedido.store') }}">
     @csrf
 
-    <select name="cliente_id" class="borda-preta">
+    <select name="cliente_cpf" class="borda-preta">
         <option>-- Selecione o Cliente --</option>
 
         @foreach ($clientes as $cliente)
-            <option value="{{ $cliente->id }}"
-                {{ ($pedido->cliente_id ?? old('cliente_id')) == $cliente->id ? 'selected' : '' }}>
+            <option value="{{ $cliente->cpf }}" {{ old('cliente_cpf') == $cliente->cpf ? 'selected' : '' }}>
                 {{ $cliente->nome }}</option>
         @endforeach
 
     </select>
-    {{ $errors->has('cliente_id') ? $errors->first('cliente_id') : '' }}
+    {{ $errors->has('cliente_cpf') ? $errors->first('cliente_cpf') : '' }}
 
     <button type="submit" class="borda-preta">Salvar</button>
 

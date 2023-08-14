@@ -17,7 +17,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>CPF</th>
                             <th>E-mail</th>
@@ -26,7 +25,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->nome }}</td>
                             <td>{{ $cliente->cpf }}</td>
                             <td>{{ $cliente->email }}</td>
@@ -36,6 +34,40 @@
                 </table>
             </div>
         </div>
+
+        @if (sizeof($cliente->pedidos) > 0)
+
+            <div>
+                <h3>Pedidos</h3>
+            </div>
+
+            <div class="informacao-pagina">
+                <div class="box-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Numero do Pedido</th>
+                                <th>Data do Pedido</th>
+                                <th>Visualização</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($cliente->pedidos as $pedido)
+                                <tr>
+                                    <td>{{ $pedido->num_pedido }}</td>
+                                    <td>{{ $pedido->created_at->format('d/m/Y') }}</td>
+                                    <td>
+                                        <a href="{{ route('pedido.show', ['pedido' => $pedido->num_pedido]) }}">Visualização
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        @endif
 
     </div>
 

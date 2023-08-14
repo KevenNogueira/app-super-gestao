@@ -12,13 +12,18 @@ class Pedido extends Model
     use HasFactory;
 
     protected $fillable = [
+        'cliente_cpf',
         'num_pedido',
-        'cliente_cpf'
     ];
+
+    protected $primaryKey = 'num_pedido';
+    public $incrementing = false;
+    protected $keyType = 'integer';
+
 
     public function produtos(): BelongsToMany
     {
-        return $this->belongsToMany(Produto::class, 'pedidos_produtos')->withPivot('created_at');
+        return $this->belongsToMany(Produto::class, 'pedidos_produtos', 'num_pedido')->withPivot('created_at');
     }
 
     public function cliente(): BelongsTo

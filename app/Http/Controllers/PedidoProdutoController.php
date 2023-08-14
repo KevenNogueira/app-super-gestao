@@ -11,14 +11,6 @@ use Illuminate\Http\Request;
 class PedidoProdutoController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create(Pedido $pedido)
@@ -48,42 +40,10 @@ class PedidoProdutoController extends Controller
         $request->validate($regras, $feedback);
 
         $pedidoProduto = new PedidoProduto();
-        $pedidoProduto->pedido_id = $pedido->id;
+        $pedidoProduto->num_pedido = $pedido->num_pedido;
         $pedidoProduto->produto_id = $request->get('produto_id');
         $pedidoProduto->save();
 
-        return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('pedido-produto.create', ['pedido' => $pedido->num_pedido]);
     }
 }

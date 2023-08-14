@@ -32,21 +32,21 @@
                                 <td>{{ $pedido->num_pedido }}</td>
                                 <td>{{ $pedido->created_at->format('d/m/Y') }}</td>
                                 <td>
-                                    <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">
+                                    <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->num_pedido]) }}">
                                         Adicionar Produto
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('pedido.show', ['pedido' => $pedido->id]) }}">Visualização</a>
+                                    <a href="{{ route('pedido.show', ['pedido' => $pedido->num_pedido]) }}">Visualização</a>
                                 </td>
                                 <td>
-                                    <form id="form_{{ $pedido->id }}" method="POST"
-                                        action="{{ route('pedido.destroy', ['pedido' => $pedido->id]) }}">
+                                    <form id="form_{{ $pedido->num_pedido }}" method="POST"
+                                        action="{{ route('pedido.destroy', ['pedido' => $pedido->num_pedido]) }}">
 
                                         @method('DELETE')
                                         @csrf
                                         <a href="#"
-                                            onclick="document.getElementById('form_{{ $pedido->id }}').submit()">Exclusão</a>
+                                            onclick="document.getElementById('form_{{ $pedido->num_pedido }}').submit()">Exclusão</a>
 
                                     </form>
                                 </td>

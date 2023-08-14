@@ -18,7 +18,7 @@
 
                 <div><strong>Numero do pedido:</strong> {{ $pedido->num_pedido }}</div>
                 <br>
-                <div><strong>ID Cliente:</strong> {{ $pedido->cliente_id }}</div>
+                <div><strong>Cliente:</strong> {{ $pedido->cliente->nome }}</div>
                 <br>
 
                 <form method="post" action="{{ route('pedido-produto.store', ['pedido' => $pedido]) }}">
@@ -40,6 +40,7 @@
             </div>
         </div>
 
+
         @if (sizeof($pedido->produtos) > 0)
 
             <div>
@@ -54,7 +55,7 @@
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Peso</th>
-                                <th>Unidade Massa</th>
+                                <th>Tamanho</th>
                                 <th>Data da Inclusão</th>
                             </tr>
                         </thead>
@@ -63,8 +64,17 @@
                                 <tr>
                                     <td>{{ $produto->nome }}</td>
                                     <td>{{ $produto->descricao }}</td>
-                                    <td>{{ $produto->peso }}</td>
-                                    <td>{{ $produto->unMedidaMassa->unidade }}</td>
+                                    <td>
+                                        {{ $produto->peso }}
+                                        {{ $produto->unMedidaMassa->unidade }}
+                                    </td>
+                                    <td>
+                                        {{ $produto->comprimento }} x
+                                        {{ $produto->largura }} x
+                                        {{ $produto->altura }}
+                                        {{ $produto->unMedidaComprimento->unidade }}
+
+                                    </td>
                                     <td>{{ $produto->pivot->created_at->format('d/m/Y') }}</td>
                                 </tr>
                             @endforeach

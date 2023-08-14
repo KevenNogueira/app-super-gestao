@@ -35,7 +35,6 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
         $regras = [
             'nome' => 'required|min:3|max:50',
             'cpf' => 'required|min:11|max:11',
@@ -56,15 +55,6 @@ class ClienteController extends Controller
         ];
 
         $request->validate($regras, $feedback);
-
-        //dd($request->get('cpf'));
-
-        /*         Cliente::create([
-            'nome' => $request('nome'),
-            'cpf' => $request('cpf'),
-            'email' => $request('email'),
-            'telefone' => $request('telefone'),
-        ]); */
 
         Cliente::create($request->all());
 

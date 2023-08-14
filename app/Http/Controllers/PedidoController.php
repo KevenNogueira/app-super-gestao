@@ -14,7 +14,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::simplePaginate(10);
+        $pedidos = Pedido::orderBy('created_at', 'desc')->simplePaginate(10);
 
         return view('app.pedido.index', [
             'titulo' => 'Pedido',
@@ -42,11 +42,11 @@ class PedidoController extends Controller
     {
 
         $regras =  [
-            'cliente_id' => 'exists:clientes,id',
+            'cliente_cpf' => 'exists:clientes,cpf',
         ];
 
         $feedback = [
-            'cliente_id.exists' => 'Cliente não existe!'
+            'cliente_cpf.exists' => 'Cliente não existe!'
         ];
 
         $request->validate($regras, $feedback);
@@ -67,22 +67,6 @@ class PedidoController extends Controller
             'titulo' => 'Pedido',
             'pedido' => $pedido
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**
